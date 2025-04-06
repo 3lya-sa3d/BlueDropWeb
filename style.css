@@ -1,4 +1,4 @@
-/* BASE */
+/* GENERAL */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -9,72 +9,100 @@ body {
 
 a {
   text-decoration: none;
-  color: white;
+  color: inherit;
 }
 
 /* NAVBAR */
 nav {
-  background: #0077b6;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
+  background: #003049;
+  padding: 0.7rem 1.5rem;
   position: sticky;
   top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .logo img {
-  height: 40px;
+  height: 35px;
+  margin-right: 0.5rem;
 }
 
-nav ul {
+.nav-links {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-nav li {
-  display: inline;
+.nav-links li a {
+  color: white;
+  padding: 0.5rem;
+  transition: background 0.3s;
 }
 
-/* HEADER */
+.nav-links li a:hover,
+.nav-links li a.active {
+  background: #00b4d8;
+  border-radius: 5px;
+}
+
+/* HERO */
 .hero {
   background: #00b4d8;
   color: white;
-  padding: 2rem;
+  padding: 2rem 1rem;
 }
 
 /* STATS */
 .stats {
-  margin: 2rem 0;
+  margin: 2rem auto;
+  max-width: 800px;
 }
 
 .stat-grid {
   display: flex;
   justify-content: center;
-  gap: 2rem;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .stat-grid div {
   background: white;
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-radius: 10px;
+  flex: 1 1 150px;
+  min-width: 150px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 /* MISSION */
 .mission {
   padding: 2rem;
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
 }
 
 /* FOOTER */
 footer {
-  background: #0077b6;
+  background: #003049;
   color: white;
   padding: 1rem;
-  position: relative;
+  margin-top: 2rem;
 }
 
