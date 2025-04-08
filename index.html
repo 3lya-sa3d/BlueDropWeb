@@ -1,62 +1,1155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BlueDrop Desalination Co.</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav.scrolled a {
+      color: #0c4a6e;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+      padding: 0 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #38bdf8;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 10px 0;
+      color: #0c4a6e;
+      font-weight: 500;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.pexels.com/photos/66090/pexels-photo-66090.jpeg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.5);
+      z-index: -1;
+      transform: scale(1.1);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 20px;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: #0284c7;
+      color: white;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      animation: fadeIn 1s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    .btn:hover {
+      background-color: #0369a1;
+      transform: scale(1.05);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+    }
+
+    /* Stats Section */
+    .stats {
+      position: relative;
+      padding: 80px 0;
+      background-color: #0c4a6e;
+      color: white;
+      overflow: hidden;
+    }
+
+    .stats-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      background-image: url('https://images.pexels.com/photos/7004511/pexels-photo-7004511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      z-index: 0;
+    }
+
+    .stats-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .stat-card {
+      background-color: rgba(7, 89, 133, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+
+    .stat-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-card h3 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .counter {
+      display: inline-block;
+    }
+
+    /* Mission Section */
+    .mission {
+      padding: 80px 0;
+      background-color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-container {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .mission h2 {
+      font-size: 2.5rem;
+      color: #0c4a6e;
+      margin-bottom: 20px;
+    }
+
+    .mission-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .mission-text {
+      flex: 1;
+    }
+
+    .mission p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .mission-image {
+      flex: 1;
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .mission-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 8s ease;
+    }
+
+    .mission-image:hover img {
+      transform: scale(1.1);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 8px 16px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      background-color: #0369a1;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Solutions Section */
+    .solutions {
+      padding: 80px 0;
+      background-color: #f8fafc;
+      position: relative;
+    }
+
+    .solutions h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #0c4a6e;
+      margin-bottom: 50px;
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .solution-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease;
+      height: 100%;
+    }
+
+    .solution-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .solution-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .solution-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .solution-card:hover .solution-image img {
+      transform: scale(1.1);
+    }
+
+    .solution-content {
+      padding: 20px;
+    }
+
+    .solution-content h3 {
+      font-size: 1.3rem;
+      color: #0c4a6e;
+      margin-bottom: 10px;
+    }
+
+    /* CTA Section */
+    .cta {
+      position: relative;
+      padding: 80px 0;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.pexels.com/photos/13770763/pexels-photo-13770763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.5);
+      z-index: -1;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn-white {
+      background-color: white;
+      color: #0c4a6e;
+    }
+
+    .btn-white:hover {
+      background-color: #f0f9ff;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0c4a6e;
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-col p,
+    .footer-col li {
+      color: #7dd3fc;
+      margin-bottom: 10px;
+    }
+
+    .footer-col a:hover {
+      color: white;
+      transition: color 0.3s ease;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: #7dd3fc;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #075985;
+      color: #7dd3fc;
+    }
+
+    /* Scroll to top button */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: #0284c7;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background-color: #0369a1;
+      transform: translateY(-3px);
+    }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(56, 189, 248, 0.2);
+      pointer-events: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      50% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 1s ease;
+    }
+
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 1s ease;
+    }
+
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .reveal-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-down {
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: all 1s ease;
+    }
+
+    .reveal-down.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-rotate {
+      opacity: 0;
+      transform: rotate(10deg) scale(0.9);
+      transition: all 1s ease;
+    }
+
+    .reveal-rotate.active {
+      opacity: 1;
+      transform: rotate(0) scale(1);
+    }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 1s ease;
+    }
+
+    .reveal-zoom.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .pulse {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .mission-container {
+        flex-direction: row;
+      }
+
+      .mission-content {
+        flex-direction: row;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .mission-image {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-         <img src="C:\Users\alyay\OneDrive\Pictures\Screenshots 1\Screenshot 2025-04-05 211547.png" alt="BlueDrop Logo" />
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Scroll to top button -->
+  <div class="scroll-top" id="scrollTop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="nav-container container">
+      <a href="#" class="logo">
+        <img src="https://via.placeholder.com/40" alt="BlueDrop Logo">
         <span>BlueDrop</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="solutions.html">Solutions</a></li>
-        <li><a href="product.html">Product</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#product">Product</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- Hero Section -->
   <header class="hero">
-    <h1>Clean Water for Every Community</h1>
-    <p>We're on a mission to make desalination affordable and accessible for all.</p>
+    <div class="hero-bg parallax-bg" data-speed="0.2"></div>
+    <div class="hero-content">
+      <h1>Clean Water for Every Community</h1>
+      <p>We're on a mission to make desalination affordable and accessible for all.</p>
+      <button class="btn">Learn More</button>
+    </div>
+    <div class="scroll-indicator">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <polyline points="19 12 12 19 5 12"></polyline>
+      </svg>
+    </div>
   </header>
 
-  <!-- MAIN -->
+  <!-- Main Content -->
   <main>
-    <section class="stats">
-      <h2>The Water Crisis</h2>
-      <div class="stat-grid">
-        <div><h3>2.2B+</h3><p>No access to safe drinking water</p></div>
-        <div><h3>785M</h3><p>Without basic water services</p></div>
-        <div><h3>485K+</h3><p>Annual deaths from waterborne disease</p></div>
-        <div><h3>6 KM</h3><p>Avg. walk for water (girls/women)</p></div>
+    <!-- Stats Section -->
+    <section class="stats" id="about">
+      <div class="stats-bg parallax-bg" data-speed="0.3"></div>
+      <div class="container stats-content">
+        <h2 class="reveal-down">The Water Crisis</h2>
+        <div class="stat-grid">
+          <div class="stat-card reveal-left" data-delay="100">
+            <h3><span class="counter" data-target="2.2" data-suffix="B+">0</span></h3>
+            <p>No access to safe drinking water</p>
+          </div>
+          <div class="stat-card reveal-up" data-delay="200">
+            <h3><span class="counter" data-target="785" data-suffix="M">0</span></h3>
+            <p>Without basic water services</p>
+          </div>
+          <div class="stat-card reveal-up" data-delay="300">
+            <h3><span class="counter" data-target="485" data-suffix="K+">0</span></h3>
+            <p>Annual deaths from waterborne disease</p>
+          </div>
+          <div class="stat-card reveal-right" data-delay="400">
+            <h3><span class="counter" data-target="6" data-suffix=" KM">0</span></h3>
+            <p>Avg. walk for water (girls/women)</p>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Mission Section -->
     <section class="mission">
-      <h2>Our Mission</h2>
-      <p>
-        BlueDrop builds low-cost, sustainable desalination units designed to survive tough environments, 
-        empowering communities with access to clean water that lasts over 5 years—without complex maintenance or high costs.
-      </p>
+      <div class="container mission-container">
+        <div class="mission-content">
+          <div class="mission-text reveal-left">
+            <h2>Our Mission</h2>
+            <p>
+              BlueDrop builds low-cost, sustainable desalination units designed to survive tough environments, 
+              empowering communities with access to clean water that lasts over 5 years—without complex maintenance or high costs.
+            </p>
+            <div class="tags">
+              <span class="tag">Sustainable</span>
+              <span class="tag">Low-cost</span>
+              <span class="tag">Durable</span>
+              <span class="tag">Low-maintenance</span>
+            </div>
+          </div>
+          <div class="mission-image reveal-right">
+            <img src="https://source.unsplash.com/random/800x600/?desalination,water" alt="BlueDrop Desalination Unit">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions" id="solutions">
+      <div class="container">
+        <h2 class="reveal-down">Our Solutions</h2>
+        <div class="solutions-grid">
+          <div class="solution-card reveal-up" data-delay="100">
+            <div class="solution-image">
+              <img src="https://source.unsplash.com/random/600x400/?community,water" alt="Community Solution">
+            </div>
+            <div class="solution-content">
+              <h3>Community Systems</h3>
+              <p>Designed for villages and small communities with limited infrastructure.</p>
+            </div>
+          </div>
+          <div class="solution-card reveal-up" data-delay="300">
+            <div class="solution-image">
+              <img src="https://source.unsplash.com/random/600x400/?emergency,water" alt="Emergency Solution">
+            </div>
+            <div class="solution-content">
+              <h3>Emergency Response</h3>
+              <p>Rapid deployment units for disaster relief and humanitarian crises.</p>
+            </div>
+          </div>
+          <div class="solution-card reveal-up" data-delay="500">
+            <div class="solution-image">
+              <img src="https://source.unsplash.com/random/600x400/?industrial,water" alt="Industrial Solution">
+            </div>
+            <div class="solution-content">
+              <h3>Industrial Applications</h3>
+              <p>Scalable solutions for commercial and industrial water needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+      <div class="cta-bg parallax-bg" data-speed="0.2"></div>
+      <div class="cta-content">
+        <h2 class="reveal-zoom">Join Our Mission</h2>
+        <p class="reveal-zoom" data-delay="200">Together, we can solve the global water crisis and ensure clean water access for generations to come.</p>
+        <button class="btn btn-white reveal-zoom" data-delay="400">Contact Us Today</button>
+      </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2025 BlueDrop Desalination Co. | All rights reserved
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>BlueDrop</h3>
+          <p>Making desalination affordable and accessible for communities worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#product">Product</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul>
+            <li>info@bluedrop.com</li>
+            <li>+1 (555) 123-4567</li>
+            <li>123 Water St, Ocean City</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+              </svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+              </svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 12c0-5.523-4  height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 BlueDrop Desalination Co. | All rights reserved
+      </div>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', function() {
+      // Navbar color change on scroll
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Show/hide scroll to top button
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('active');
+      } else {
+        scrollTopBtn.classList.remove('active');
+      }
+    });
+
+    // Mobile menu toggle
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Scroll to top functionality
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Enhanced parallax effect
+    window.addEventListener('scroll', function() {
+      const parallaxElements = document.querySelectorAll('.parallax-bg');
+      const scrollPosition = window.pageYOffset;
+      
+      parallaxElements.forEach(element => {
+        const speed = element.dataset.speed || 0.5;
+        const yPos = -(scrollPosition * speed);
+        element.style.transform = `translate3d(0, ${yPos}px, 0) scale(1.1)`;
+      });
+      
+      // Hero section zoom effect on scroll
+      const heroSection = document.querySelector('.hero');
+      const heroHeight = heroSection.offsetHeight;
+      const scrollPercentage = Math.min(scrollPosition / heroHeight, 1);
+      const heroBackground = document.querySelector('.hero-bg');
+      
+      if (heroBackground) {
+        const scale = 1.1 + (scrollPercentage * 0.1); // Scale from 1.1 to 1.2
+        heroBackground.style.transform = `scale(${scale})`;
+      }
+    });
+
+    // Advanced reveal animations on scroll
+    function reveal() {
+      const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-up, .reveal-down, .reveal-zoom, .reveal-rotate');
+      
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        const delay = reveals[i].dataset.delay || 0;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          setTimeout(() => {
+            reveals[i].classList.add('active');
+          }, delay);
+        }
+      }
+    }
+
+    // Counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200; // The lower the faster
+      
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const suffix = counter.getAttribute('data-suffix') || '';
+        let count = 0;
+        const decimalPlaces = String(target).includes('.') ? String(target).split('.')[1].length : 0;
+        const increment = target / speed;
+        
+        const updateCount = () => {
+          if (count < target) {
+            count += increment;
+            if (count > target) count = target;
+            counter.innerText = count.toFixed(decimalPlaces) + suffix;
+            requestAnimationFrame(updateCount);
+          } else {
+            counter.innerText = target + suffix;
+          }
+        };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            updateCount();
+            counterObserver.unobserve(counter);
+          }
+        }, { threshold: 0.5 });
+        
+        counterObserver.observe(counter);
+      });
+    }
+
+    // Create particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size between 2px and 6px
+        const size = Math.random() * 4 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        
+        // Random opacity
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        // Animation
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 5;
+        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Initialize all animations
+    window.addEventListener('load', function() {
+      createParticles();
+      reveal();
+      animateCounters();
+    });
+    
+    window.addEventListener('scroll', reveal);
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          // Close mobile menu if open
+          mobileMenu.classList.remove('active');
+          
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Adjust for navbar height
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
-
