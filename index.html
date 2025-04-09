@@ -1075,6 +1075,75 @@ html >
         height: 300px;
       }
     }
+
+/* About Section Styles */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 60px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    flex-direction: row;
+  }
+}
+
+.about-text, .about-team {
+  flex: 1;
+  background-color: rgba(7, 89, 133, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+}
+
+.about-text:hover, .about-team:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.about-text h3, .about-team h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #38bdf8;
+}
+
+.about-text p {
+  margin-bottom: 25px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.team-list {
+  list-style: none;
+  padding: 0;
+}
+
+.team-list li {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.1rem;
+}
+
+.team-list li:last-child {
+  border-bottom: none;
+}
+
+.team-list strong {
+  color: #38bdf8;
+  margin-right: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-5 {
+  margin-bottom: 5rem;
+}
   </style>
 </head>
 <body>
@@ -1137,31 +1206,61 @@ html >
 
   <!-- Main Content -->
   <main>
-    <!-- Stats Section -->
-    <section class="stats" id="about">
-      <div class="stats-bg parallax-bg" data-speed="0.3"></div>
-      <div class="container stats-content">
-        <h2 class="reveal-down">The Water Crisis</h2>
-        <div class="stat-grid">
-          <div class="stat-card reveal-left" data-delay="100">
-            <h3><span class="counter" data-target="2.2" data-suffix="B+">0</span></h3>
-            <p>No access to safe drinking water</p>
-          </div>
-          <div class="stat-card reveal-up" data-delay="200">
-            <h3><span class="counter" data-target="785" data-suffix="M">0</span></h3>
-            <p>Without basic water services</p>
-          </div>
-          <div class="stat-card reveal-up" data-delay="300">
-            <h3><span class="counter" data-target="485" data-suffix="K+">0</span></h3>
-            <p>Annual deaths from waterborne disease</p>
-          </div>
-          <div class="stat-card reveal-right" data-delay="400">
-            <h3><span class="counter" data-target="6" data-suffix=" KM">0</span></h3>
-            <p>Avg. walk for water (girls/women)</p>
-          </div>
-        </div>
+    <!-- About Section -->
+<section class="stats" id="about">
+  <div class="stats-bg parallax-bg" data-speed="0.3"></div>
+  <div class="container stats-content">
+    <h2 class="reveal-down">About Us</h2>
+    <p class="reveal-up text-center mb-5" style="color: white; font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px;">
+      We're engineers, dreamers, and doers on a mission to hydrate the world.
+    </p>
+    
+    <div class="about-content">
+      <div class="about-text reveal-left">
+        <h3>Who We Are</h3>
+        <p>
+          BlueDrop is a student-led initiative to fight water scarcity using 
+          practical science and cheap tech. We believe clean water is a human right—
+          and we're doing something about it.
+        </p>
+        
+        <h3>Why Desalination?</h3>
+        <p>
+          Oceans cover 70% of Earth, yet billions go thirsty. Our low-cost desalination 
+          systems can bring fresh water to places where it's needed most.
+        </p>
       </div>
-    </section>
+      
+      <div class="about-team reveal-right">
+        <h3>Our Team</h3>
+        <ul class="team-list">
+          <li><strong>CEO & Founder:</strong> Alya Saad</li>
+          <li><strong>Engineering Lead:</strong> AI-powered 🤖</li>
+          <li><strong>Field Ops:</strong> Local communities</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="stat-grid">
+      <div class="stat-card reveal-left" data-delay="100">
+        <h3><span class="counter" data-target="2.2" data-suffix="B+">0</span></h3>
+        <p>No access to safe drinking water</p>
+      </div>
+      <div class="stat-card reveal-up" data-delay="200">
+        <h3><span class="counter" data-target="785" data-suffix="M">0</span></h3>
+        <p>Without basic water services</p>
+      </div>
+      <div class="stat-card reveal-up" data-delay="300">
+        <h3><span class="counter" data-target="485" data-suffix="K+">0</span></h3>
+        <p>Annual deaths from waterborne disease</p>
+      </div>
+      <div class="stat-card reveal-right" data-delay="400">
+        <h3><span class="counter" data-target="6" data-suffix=" KM">0</span></h3>
+        <p>Avg. walk for water (girls/women)</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Mission Section -->
     <section class="mission">
@@ -1607,6 +1706,12 @@ html >
     const position = 'absolute'; // Example value, adjust as needed
     const background = 'white'; // Example value, adjust as needed
     const color = 'black'; // Example value, adjust as needed
+
+    const family = "Arial, sans-serif";
+    const text = "Sample Text";
+    const decoration = "none";
+    const list = "none";
+    const style = {};
   </script>
 </body>
 </html>
