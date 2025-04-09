@@ -415,6 +415,258 @@ html >
       margin-bottom: 10px;
     }
 
+    /* Product Section */
+    .product-section {
+      position: relative;
+      padding: 100px 0;
+      color: white;
+      overflow: hidden;
+    }
+
+    .product-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1527066579998-dbbae57f45ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: brightness(0.4);
+      z-index: -1;
+    }
+
+    .product-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .product-header h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .product-header h2:after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background-color: #38bdf8;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .product-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .product-content {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .product-kit {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .product-kit {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .product-image {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-details {
+      flex: 1;
+      padding: 30px;
+      background-color: rgba(12, 74, 110, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-details h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    .product-list {
+      margin-bottom: 30px;
+    }
+
+    .product-list li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+
+    .product-list li svg {
+      margin-right: 15px;
+      min-width: 24px;
+      color: #38bdf8;
+    }
+
+    .product-specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .spec-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .spec-card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .spec-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #38bdf8;
+    }
+
+    .spec-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .spec-label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .product-gallery {
+      margin-top: 80px;
+    }
+
+    .gallery-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .gallery-title:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: #38bdf8;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      position: relative;
+      height: 200px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover:after {
+      opacity: 1;
+    }
+
+    .product-cta {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .product-cta h3 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: #38bdf8;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      background-color: #0284c7;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
     /* CTA Section */
     .cta {
       position: relative;
@@ -461,6 +713,55 @@ html >
 
     .btn-white:hover {
       background-color: #f0f9ff;
+    }
+
+    /* Contact Form Styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-form button {
+      padding: 12px 30px;
+      background-color: #0284c7;
+      color: white;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .contact-form button:hover {
+      background-color: #0369a1;
+      transform: scale(1.05);
+    }
+
+    .form-status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .form-status.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
     }
 
     /* Footer */
@@ -765,55 +1066,14 @@ html >
       .mission-image {
         height: 300px;
       }
-    }
 
-    /* Contact Form Styles */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+      .product-kit {
+        flex-direction: column;
+      }
 
-    .contact-form input,
-    .contact-form textarea {
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 150px;
-    }
-
-    .contact-form button {
-      padding: 12px 30px;
-      background-color: #0284c7;
-      color: white;
-      font-weight: bold;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: none;
-    }
-
-    .contact-form button:hover {
-      background-color: #0369a1;
-      transform: scale(1.05);
-    }
-
-    .form-status {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .form-status.success {
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
+      .product-image {
+        height: 300px;
+      }
     }
   </style>
 </head>
@@ -832,7 +1092,7 @@ html >
   <nav id="navbar">
     <div class="nav-container container">
       <a href="#" class="logo">
-        <img src="https://ci3.googleusercontent.com/mail-img-att/AGAZnRpD4p4QrnWUBqfYeGSZ0TgB7Q4o1dar-U0cJxv7mp1DG0k5YxCy8AR56J5wG23SdQAbTeft46znQ3cvy-fMoPusPTQRGRhFdOnuYw0dGYLVTQ1WEJ71ZudV6uRCnUZyXY7DVRDWpQ81ElWytoaRsZ7hpBpIvr4vx3I__sY1tJicq0n0K7N1ceaFQkTkXuLQcJEH1q2lXWfawkU42domC5NqO9YLz3Kg46MLNRVwqUAgAVQBQMV5V04aR7G1wSHmJTsVceIjaK9INgIVFqCAgImXMsFZft9n8h8oWj6drIPWuOFbk3s1HWc34lVcR_Nyay4Maf5ZqjCP7VAyONWLh5sGytrUTRXMsJ7Sp3YLvtkHYUmcUOQT7MDZlt7X9Wrzc6RfWFftLRER-7gjXnAieYm3h6V4O3m-VyYueCUWQm4SKUl74R0_I9AhACxg4-BmW2_EsK6YnyQGEPCxJZszTQl6vWEl7YcxGLZY0vsP_yTwyc97KZDMR2-7Zt1UuqWGMu5vZ6Dim8QD0XM8NdL_J5juCa8tCEc0acvJN3-sY1mxXYKwZu-M-vn7BmxYXKbuFg0c7F2qlYTv9e9Gdvcv3qWM2t4Sa5NSDxLSG9ypEfcj4UIkOU4U0mZZrl0UqkMglWpDbC-nPR-1P-jciv3Ch5QMoGp674wTrp2gBWdaSX-9j4hIYE75T5CeCCYu9-7W17DcU_bxONeQnjc1r5NknFnjOUKEpLOGp2fUOuAzexLETCdY2t4DtJU3gQ9lX3M4SwnLl7NmCyCgJSfBH9ueKKsb92bWu0ZfIeI9RUMgmdPXNYMgA6VOrWZf7L4akqHZJNBtEUJrgzjJSQLxxnRKcrElVEPuwqIbkVDQDCVdPx4Yf9CqtFARFNfc3Kz06euh84jKEquoQtb_AzvXeIsUtJonZlGNBdkA3LUX_t1nnO83xh4hCHEjHtNFOZIjOAluHK1Bk7InlqaEqKs6rE-poS-Rx0Pgbrg9n9JNF0g0tgrypRjwP1DX9itmmHBVviriPjryhrhimrUXDKzvZ4ZIU0U=s0-l75-ft" alt="BlueDrop Logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-hYSjoByBV6W9Rx6voHfMDN9CX6SQDg.png" alt="BlueDrop Logo">
         <span>BlueDrop</span>
       </a>
       <ul class="nav-links">
@@ -963,13 +1223,108 @@ html >
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="contact">
-      <div class="cta-bg parallax-bg" data-speed="0.2"></div>
-      <div class="cta-content">
-        <h2 class="reveal-zoom">Join Our Mission</h2>
-        <p class="reveal-zoom" data-delay="200">Together, we can solve the global water crisis and ensure clean water access for generations to come.</p>
-        <button class="btn btn-white reveal-zoom" data-delay="400">Contact Us Today</button>
+    <!-- Product Section -->
+    <section class="product-section" id="product">
+      <div class="product-bg"></div>
+      <div class="container">
+        <div class="product-header">
+          <h2 class="reveal-down">The BlueDrop Desalination Kit</h2>
+          <p class="reveal-up" data-delay="200">Clean water, simplified. Our innovative technology makes desalination accessible to communities worldwide.</p>
+        </div>
+        
+        <div class="product-content">
+          <div class="product-kit">
+            <div class="product-image reveal-left">
+              <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="BlueDrop Desalination Kit">
+            </div>
+            <div class="product-details reveal-right">
+              <h3>What's in the Kit?</h3>
+              <ul class="product-list">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  ATP pump unit (no electricity needed)
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Solar attachment option
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Prebuilt reverse osmosis filter
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Modular housing unit (3D-printable)
+                </li>
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  DIY Assembly Manual
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="product-specs reveal-up">
+            <div class="spec-card">
+              <div class="spec-icon">💧</div>
+              <div class="spec-value">12–20L/day</div>
+              <div class="spec-label">Output</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-icon">⚙️</div>
+              <div class="spec-value">5–7 years</div>
+              <div class="spec-label">Lifespan</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-icon">🧰</div>
+              <div class="spec-value">Self-cleaning</div>
+              <div class="spec-label">Maintenance</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-icon">💵</div>
+              <div class="spec-value">~$95</div>
+              <div class="spec-label">Cost to build</div>
+            </div>
+          </div>
+          
+          <div class="product-gallery reveal-up">
+            <h3 class="gallery-title">Gallery</h3>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1548407260-da850faa41e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="BlueDrop Kit Installation">
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1565726166189-e9814a05ffde?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="BlueDrop Filter System">
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="BlueDrop in Action">
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="BlueDrop Components">
+              </div>
+            </div>
+          </div>
+          
+          <div class="product-cta reveal-zoom">
+            <h3>Ready to Help?</h3>
+            <a href="#contact" class="cta-btn">Contact Us to Deploy</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1245,6 +1600,13 @@ html >
         }, 3000);
       });
     }
+
+    // Fix for undeclared variables
+    const max = 100; // Example value, adjust as needed
+    const width = 50; // Example value, adjust as needed
+    const position = 'absolute'; // Example value, adjust as needed
+    const background = 'white'; // Example value, adjust as needed
+    const color = 'black'; // Example value, adjust as needed
   </script>
 </body>
 </html>
