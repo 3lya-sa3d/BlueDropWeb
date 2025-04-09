@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE
+html >
+  <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -765,6 +766,55 @@
         height: 300px;
       }
     }
+
+    /* Contact Form Styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-form button {
+      padding: 12px 30px;
+      background-color: #0284c7;
+      color: white;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .contact-form button:hover {
+      background-color: #0369a1;
+      transform: scale(1.05);
+    }
+
+    .form-status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .form-status.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
   </style>
 </head>
 <body>
@@ -773,7 +823,7 @@
 
   <!-- Scroll to top button -->
   <div class="scroll-top" id="scrollTop">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </div>
@@ -793,7 +843,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="mobile-menu-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -818,7 +868,7 @@
       <button class="btn">Learn More</button>
     </div>
     <div class="scroll-indicator">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="5" x2="12" y2="19"></line>
         <polyline points="19 12 12 19 5 12"></polyline>
       </svg>
@@ -922,6 +972,22 @@
         <button class="btn btn-white reveal-zoom" data-delay="400">Contact Us Today</button>
       </div>
     </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="reveal-down">Contact Us</h2>
+        <p class="reveal-up">Fill out the form below to get in touch with us.</p>
+        <form class="contact-form reveal-up" id="contactForm">
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+          <input type="email" id="email" name="email" placeholder="Your Email" required>
+          <input type="text" id="subject" name="subject" placeholder="Subject" required>
+          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -964,7 +1030,6 @@
             </a>
             <a href="#">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M22 12c0-5.523-4  height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
               </svg>
             </a>
@@ -1150,6 +1215,36 @@
         }
       });
     });
+
+    // Contact form functionality
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Prepare mailto link with form data
+        const mailtoLink = `mailto:info@bluedrop.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        formStatus.textContent = 'Your email client has been opened with your message. Thank you for contacting us!';
+        formStatus.className = 'form-status success';
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          contactForm.reset();
+        }, 3000);
+      });
+    }
   </script>
 </body>
 </html>
